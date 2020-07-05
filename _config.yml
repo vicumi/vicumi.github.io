@@ -8,7 +8,7 @@ subtitle:
 description: 这个博客只是用来搭着玩的
 keywords:
 author: Vicumi
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -73,11 +73,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next-reloaded
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/vicumi/vicumi.github.io.git
+  repo: git@github.com:vicumi/vicumi.github.io.git #https://github.com/vicumi/vicumi.github.io.git
   branch: master
