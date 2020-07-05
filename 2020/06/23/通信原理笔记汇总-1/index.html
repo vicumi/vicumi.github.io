@@ -295,18 +295,18 @@
 <li><p>带宽：是基带信号带宽的2倍，公式见上面。</p>
 </li>
 <li><p><strong>功率</strong>分配：载波功率$S_C$+边带功率$S_f$，只有边带功率和调制信号有关，载波分量不携带信息。</p>
-<p>其中$S<em>{C}=\frac{A</em>{0}^{2} }{2}$，$S_{f}=\frac{\overline{f^{2}(t)} }{2}$</p>
+<p>其中$S_{C}=\frac{A_{0}^{2} }{2}$，$S_{f}=\frac{\overline{f^{2}(t)} }{2}$</p>
 </li>
 <li><p>调制效率：<script type="math/tex">\eta_{\mathrm{AM} }=S_{f} / S_{\mathrm{AM} }=\overline{f^{2}(t)} /\left[A_{0}^{2}+\overline{f^{2}(t)}\right]</script></p>
 <p>当调制信号为单频余弦信号时，$\overline{f^{2}(t)}=\frac{A_{m}^{2} }{2}$，此时</p>
-<script type="math/tex; mode=display">\eta_{\mathrm{AM} } = \frac{S_f}{S_C+S_f} = \frac{\frac{A_m^2}{4} }{\frac{A_0^2}{2}+\frac{A_m^2}{4} } = \frac{A_{m}^{2} }{2 A_{0}^{2}+A_{m}^{2} }=\frac{\beta_{\text {AM } }^{2} }{2+\beta_{\text {AM } }^{2} }</script><p>其中$\beta<em>{\mathrm{AM} }=\frac{A</em>{\mathrm{m} }}{A<em>{0} } \leq 1$，为调幅指数。在刚发生过调制的情况下，$\beta</em>{\mathrm{AM} }=1$，这时的调制效率达到<strong>最大值</strong>，$\mathrm{max}(\eta_{\mathrm{AM} })=\frac{1}{3}$。</p>
+<script type="math/tex; mode=display">\eta_{\mathrm{AM} } = \frac{S_f}{S_C+S_f} = \frac{\frac{A_m^2}{4} }{\frac{A_0^2}{2}+\frac{A_m^2}{4} } = \frac{A_{m}^{2} }{2 A_{0}^{2}+A_{m}^{2} }=\frac{\beta_{\text {AM } }^{2} }{2+\beta_{\text {AM } }^{2} }</script><p>其中$\beta_{\mathrm{AM} }=\frac{A_{\mathrm{m} }}{A_{0} } \leq 1$，为调幅指数。在刚发生过调制的情况下，$\beta_{\mathrm{AM} }=1$，这时的调制效率达到<strong>最大值</strong>，$\mathrm{max}(\eta_{\mathrm{AM} })=\frac{1}{3}$。</p>
 </li>
 </ol>
 </li>
 </ol>
 <h3 id="2-抑制载波双边带调幅（DSB-SC，简写DSB）"><a href="#2-抑制载波双边带调幅（DSB-SC，简写DSB）" class="headerlink" title="2. 抑制载波双边带调幅（DSB-SC，简写DSB）"></a>2. 抑制载波双边带调幅（DSB-SC，简写DSB）</h3><p>如前所述，在常规双边带调幅中载波功率是无用的，因为载波不携带任何信息，信息完全由边带传送。如果要将载波抑制，只需<strong>不附加直流分量</strong>$A_0$即可得到抑制载波的双边带调幅。</p>
 <ol>
-<li><p>时域表达式：$S<em>{\mathrm{DSB} }(t)=f(t) \cos \omega</em>{C} t$</p>
+<li><p>时域表达式：$S_{\mathrm{DSB} }(t)=f(t) \cos \omega_{C} t$</p>
 </li>
 <li><p>DSB的频谱</p>
 <script type="math/tex; mode=display">S_{\mathrm{DSB} }(\omega)=\frac{1}{2} F\left(\omega-\omega_{C}\right)+\frac{1}{2} F\left(\omega+\omega_{C}\right)</script><p>图中可以看出，DSB的<strong>带宽</strong>依然是<strong>调制信号的2倍</strong>，$B_{\rm DSB} = 2\omega_H$。</p>
@@ -429,12 +429,12 @@
 <li>双边：$\frac{n_0}{2}$</li>
 </ol>
 </li>
-<li><p>解调器噪声输入功率：$N<em>{i} = n</em>{0}B$</p>
+<li><p>解调器噪声输入功率：$N_{i} = n_{0}B$</p>
 </li>
 <li><p>中心频率</p>
 <ol>
 <li>AM和DSB：$\omega_0 = \omega_C$，$f_0 = f_C$</li>
-<li>SSB：$\frac{1}{2 \pi}\left|\omega<em>{0}-\omega</em>{C}\right|=\frac{W}{2}$</li>
+<li>SSB：$\frac{1}{2 \pi}\left|\omega_{0}-\omega_{C}\right|=\frac{W}{2}$</li>
 </ol>
 </li>
 <li><p>解调信噪比增益——衡量解调器的好坏</p>
@@ -492,7 +492,7 @@
 <li><p>结论：SSB = DSB &gt; AM，VSB的性能可能与SSB相当。</p>
 </li>
 <li><p>原理和注意事项</p>
-<p>需要注意的是SSB和DSB的比较。虽然经过上文的计算推导得到信噪比增益是$G<em>{\rm SSB}=1 &lt; G</em>{\rm DSB}=2$，但是可以发现这个计算过程中DSB的输入信号的功率是SSB输入信号功率的2倍（因为DSB占了2倍的频带），导致DSB的输出信噪比也是SSB的2倍。<strong><font color=red>若要比较两者的抗噪声性能，必须在相同输入信号功率$S_i$、相同输入噪声功率密度$n_0$、相同的调制信号带宽$W$的情况下，比较输出的信噪比。</font></strong>所以，实际上SSB和DSB的抗噪声性能<strong>相同</strong>。</p>
+<p>需要注意的是SSB和DSB的比较。虽然经过上文的计算推导得到信噪比增益是$G_{\rm SSB}=1 &lt; G_{\rm DSB}=2$，但是可以发现这个计算过程中DSB的输入信号的功率是SSB输入信号功率的2倍（因为DSB占了2倍的频带），导致DSB的输出信噪比也是SSB的2倍。<strong><font color=red>若要比较两者的抗噪声性能，必须在相同输入信号功率$S_i$、相同输入噪声功率密度$n_0$、相同的调制信号带宽$W$的情况下，比较输出的信噪比。</font></strong>所以，实际上SSB和DSB的抗噪声性能<strong>相同</strong>。</p>
 </li>
 </ol>
 </li>
@@ -522,8 +522,8 @@
 <ol>
 <li><p>特点：幅度和频率保持不变，而<strong>瞬时相位是调制信号的线性函数</strong>。</p>
 </li>
-<li><p>瞬时相位：$\phi(t)=K<em>{\mathrm{PM} } f(t)+\phi</em>{0}$</p>
-<p>式中的$K<em>{\rm PM}$称为<u>相移常数</u>，是取决于具体电路的常数。其中第一部分$\Delta\phi=K</em>{\mathrm{PM} } f(t)$称为<u>瞬时相偏</u>。</p>
+<li><p>瞬时相位：$\phi(t)=K_{\mathrm{PM} } f(t)+\phi_{0}$</p>
+<p>式中的$K_{\rm PM}$称为<u>相移常数</u>，是取决于具体电路的常数。其中第一部分$\Delta\phi=K_{\mathrm{PM} } f(t)$称为<u>瞬时相偏</u>。</p>
 </li>
 <li><p>相位调制时域表达式</p>
 <p>设起始相位为0，则</p>
@@ -534,13 +534,13 @@
 <ol>
 <li><p>特点：幅度不变，起始相位为0，而<strong>瞬时角频率是调制信号的线性函数</strong>。</p>
 </li>
-<li><p>瞬时角频率：$\omega=\omega<em>{C}+K</em>{\mathrm{FM} } f(t)$</p>
-<p>式中的$K<em>{\rm FM}$是频偏常数，第二部分$\Delta\omega=K</em>{\mathrm{FM} } f(t)$为瞬时频偏。</p>
+<li><p>瞬时角频率：$\omega=\omega_{C}+K_{\mathrm{FM} } f(t)$</p>
+<p>式中的$K_{\rm FM}$是频偏常数，第二部分$\Delta\omega=K_{\mathrm{FM} } f(t)$为瞬时频偏。</p>
 </li>
 <li><p>频率调制的时域表达式（设初始相位为0）</p>
 <p>由于<u>瞬时角频率换瞬时相位之间互为微分或积分关系</u>，则有</p>
 <script type="math/tex; mode=display">S_{\mathrm{FM} }(t)=A \cos \left[\omega_{C}+K_{\mathrm{FM} } f(t)\right] t</script><p>或</p>
-<script type="math/tex; mode=display">S_{\mathrm{FM} }(t)=A \cos \left[\omega_{C} t+K_{\mathrm{FM} } \int_{-\infty}^{t} f(\tau) d\tau\right]</script><p>注意⚠：若题目中已知$S<em>{\rm FM}(t)$的表达式，且形如$S</em>{\rm FM}(t) = A \cos [\omega_C t + B F(t)]$，则</p>
+<script type="math/tex; mode=display">S_{\mathrm{FM} }(t)=A \cos \left[\omega_{C} t+K_{\mathrm{FM} } \int_{-\infty}^{t} f(\tau) d\tau\right]</script><p>注意⚠：若题目中已知$S_{\rm FM}(t)$的表达式，且形如$S_{\rm FM}(t) = A \cos [\omega_C t + B F(t)]$，则</p>
 <ol>
 <li>频偏常数$K_{\mathrm{FM} }=B$</li>
 <li><strong>调制信号的表达式：$f(t) = F’(t)$，即对$F(t)$<font color="red">求导</font>。</strong></li>
@@ -555,7 +555,7 @@
 <ol>
 <li><p>时域表达式</p>
 <script type="math/tex; mode=display">\begin{aligned} S_{\rm PM}(t) &= A \cos \left[\omega_{C} t+K_{\rm PM} A_{m} \cos \omega_{m} t\right] \\ &= A \cos \left[ \omega_{C}t + \beta_{\rm PM} \cos\omega_{m}t  \right] \end{aligned}</script></li>
-<li><p>调相指数：$\beta<em>{\rm PM} = K</em>{\rm PM} A_m$</p>
+<li><p>调相指数：$\beta_{\rm PM} = K_{\rm PM} A_m$</p>
 <ol>
 <li>它代表调相波的<strong>最大相位偏移</strong>。</li>
 <li><u>调相指数与调制信号的频率无关</u>。</li>
@@ -567,11 +567,11 @@
 <ol>
 <li><p>时域表达式：</p>
 <script type="math/tex; mode=display">\begin{aligned}S_{\rm FM}(t) &= A \cos \left[\omega_{C} t+\int_{-\infty}^{t} K_{\rm FM} A_{m} \cos \omega_{m} \tau d \tau\right] \\ &= A \cos \left[\omega_{C} t+\frac{K_{\rm FM} A_{m} }{\omega_{m} } \sin \omega_{m} t\right] \\ &=A \cos \left[\omega_{C} t+\beta_{\rm FM} \sin \omega_{m} t\right] \end{aligned}</script></li>
-<li><p>调频指数：$\beta<em>{\rm FM} = \frac{K</em>{\rm FM}A_m}{\omega_m}$</p>
+<li><p>调频指数：$\beta_{\rm FM} = \frac{K_{\rm FM}A_m}{\omega_m}$</p>
 <ol>
 <li>它代表<strong>调频波的最大<font color="red">相位</font>偏移</strong>（⚠）</li>
-<li>调频波的最大频率偏移为：$\Delta \omega<em>{\max }=K</em>{\rm FM}|f(t)|<em>{\max }=K</em>{\rm FM} A_{m}$</li>
-<li>调频指数又等于<u>最大频偏与调制信号角频率之比</u>：$\beta<em>{\rm FM} = \frac{\Delta\omega</em>{\max} }{\omega_m}$</li>
+<li>调频波的最大频率偏移为：$\Delta \omega_{\max }=K_{\rm FM}|f(t)|_{\max }=K_{\rm FM} A_{m}$</li>
+<li>调频指数又等于<u>最大频偏与调制信号角频率之比</u>：$\beta_{\rm FM} = \frac{\Delta\omega_{\max} }{\omega_m}$</li>
 </ol>
 </li>
 </ol>
@@ -579,8 +579,8 @@
 <li><p>单频调制的特点</p>
 <p>当调制信号的最大幅度$A_m$一定时，使其角频率$\omega_m$增加：</p>
 <ol>
-<li>FM中$\Delta \omega<em>{\max}$不变，而$\beta</em>{\rm FM}$成反比地减小.</li>
-<li>PM中$\beta<em>{\rm PM}$不变，而$\Delta \omega</em>{\max}$成正比地增加。</li>
+<li>FM中$\Delta \omega_{\max}$不变，而$\beta_{\rm FM}$成反比地减小.</li>
+<li>PM中$\beta_{\rm PM}$不变，而$\Delta \omega_{\max}$成正比地增加。</li>
 </ol>
 </li>
 </ol>
@@ -630,12 +630,12 @@
 </ol>
 <h2 id="4-3-单频信号宽带调频"><a href="#4-3-单频信号宽带调频" class="headerlink" title="4.3 单频信号宽带调频"></a>4.3 单频信号宽带调频</h2><ol>
 <li><p>单频调制时带宽调频信号的频域表达</p>
-<p>利用调频的时域表达式$S<em>{\rm FM}(t) = A \cos \left[\omega</em>{C} t+\beta<em>{\rm FM} \sin \omega</em>{m} t\right]$。将其用三角公式展开，并再次展开成以贝塞尔函数为系数的三角级数，然后利用<strong>贝塞尔函数</strong>变形可以得到：</p>
+<p>利用调频的时域表达式$S_{\rm FM}(t) = A \cos \left[\omega_{C} t+\beta_{\rm FM} \sin \omega_{m} t\right]$。将其用三角公式展开，并再次展开成以贝塞尔函数为系数的三角级数，然后利用<strong>贝塞尔函数</strong>变形可以得到：</p>
 <script type="math/tex; mode=display">S_{\mathrm{FM} }(\omega)=\pi A \sum\limits_{n=-\infty}^{\infty} J_{n}\left(\beta_{\mathrm{FM} }\right)\left[\delta\left(\omega-\omega_{C}-n \omega_{m}\right)+\delta\left(\omega+\omega_{C}+n \omega_{m}\right)\right]</script><p>这说明调频信号中：</p>
 <ol>
 <li>频谱中有无穷多个频谱分量；</li>
-<li>其载频分量幅度<strong>正比</strong>于$J<em>0 (\beta</em>{\rm FM})$；</li>
-<li>围绕着$\omega<em>C$的各次方变频分量幅度<strong>正比</strong>于$J_n (\beta</em>{\rm FM})$。</li>
+<li>其载频分量幅度<strong>正比</strong>于$J_0 (\beta_{\rm FM})$；</li>
+<li>围绕着$\omega_C$的各次方变频分量幅度<strong>正比</strong>于$J_n (\beta_{\rm FM})$。</li>
 <li>至于由贝塞尔函数所决定的调频信号性质，参见教材P72~P73。</li>
 </ol>
 </li>
@@ -644,18 +644,18 @@
 <li><p>思路：略去高次边频，近似认为具有有限的频谱</p>
 </li>
 <li><p><strong><font color="red"><u>卡森公式</u></font></strong></p>
-<script type="math/tex; mode=display">\begin{aligned} B_{\mathrm{FM} } &=2 \Delta f_{\max }\left(1+\frac{1}{\beta_{\mathrm{FM} }}\right) \\ &=2\left(\Delta f_{\max }+f_{m}\right) \\ &=2\left(\beta_{\mathrm{FM} }+1\right) f_{m} \end{aligned}</script><p>另外，注意到有关系$\beta<em>{\rm FM} = \frac{\Delta f</em>{\max} }{f_m}$。</p>
+<script type="math/tex; mode=display">\begin{aligned} B_{\mathrm{FM} } &=2 \Delta f_{\max }\left(1+\frac{1}{\beta_{\mathrm{FM} }}\right) \\ &=2\left(\Delta f_{\max }+f_{m}\right) \\ &=2\left(\beta_{\mathrm{FM} }+1\right) f_{m} \end{aligned}</script><p>另外，注意到有关系$\beta_{\rm FM} = \frac{\Delta f_{\max} }{f_m}$。</p>
 </li>
 </ol>
 </li>
 <li><p>单频调制时的功率分配</p>
 <ol>
-<li><p>利用贝塞尔函数的一个性质分析：$\sum\limits<em>{n=-\infty}^{\infty} J</em>{n}^{2}\left(\beta_{\mathrm{FM} }\right)=1$</p>
+<li><p>利用贝塞尔函数的一个性质分析：$\sum\limits_{n=-\infty}^{\infty} J_{n}^{2}\left(\beta_{\mathrm{FM} }\right)=1$</p>
 <p>这说明了：<strong>载频信号中所有频率分量（包括载波）的平均功率之和是常数</strong>，即总功率不变。</p>
 </li>
 <li><p>当调制指数$\beta_{\rm FM}=0$时，表示信号未经过调制，此时只有载波功率，其值为$\frac{A^2}{2}$</p>
 </li>
-<li><p>当调制指数$\beta<em>{\rm FM} \neq 0$时，载波功率下降，<u>转变为各边频的功率</u>，而<u>总功率保持不变</u>，始终为$\frac{A^2}{2}$。$\beta</em>{\rm FM} $的变化反映的是载波和各边频分量功率分配关系的变化。</p>
+<li><p>当调制指数$\beta_{\rm FM} \neq 0$时，载波功率下降，<u>转变为各边频的功率</u>，而<u>总功率保持不变</u>，始终为$\frac{A^2}{2}$。$\beta_{\rm FM} $的变化反映的是载波和各边频分量功率分配关系的变化。</p>
 </li>
 </ol>
 </li>
@@ -689,18 +689,18 @@
 <script type="math/tex; mode=display">S_{o}=\frac{K_{\mathrm{FM} }^{2} }{4 \pi^{2} } \overline{f^{2}(t)}</script><p>输出噪声功率为</p>
 <script type="math/tex; mode=display">N_{o}=\int_{-f_{m} }^{f_{m} } \frac{n_{0} f^{2} }{A^{2} } d f=\frac{2 n_{0} f_{m}^{3} }{3 A^{2} }</script><p>其中$f_m$为调制信号的截止频率。</p>
 <p>由此可以得到输出信噪比为</p>
-<script type="math/tex; mode=display">\frac{S_{o} }{N_{o} }=\frac{3 A^{2} K_{\mathrm{FM} }^{2} \overline {f^{2}(t)} }{8 \pi^{2} n_{0} f_{m}^{3} }</script><p>如果将$\Delta f<em>{\max }=\frac{1}{2 \pi} K</em>{\mathrm{FM} }|f(t)|_{\max }$带入上式，则输出信噪比为</p>
+<script type="math/tex; mode=display">\frac{S_{o} }{N_{o} }=\frac{3 A^{2} K_{\mathrm{FM} }^{2} \overline {f^{2}(t)} }{8 \pi^{2} n_{0} f_{m}^{3} }</script><p>如果将$\Delta f_{\max }=\frac{1}{2 \pi} K_{\mathrm{FM} }|f(t)|_{\max }$带入上式，则输出信噪比为</p>
 <script type="math/tex; mode=display">\frac{S_{o} }{N_{o} }=3\left(\frac{\Delta f_{\max } }{f_{\mathrm{a} }}\right)^{2} \frac{\overline {f^{2}(t)} }{|f(t)|_{\max }^{2} } \frac{A^{2} / 2}{n_{0} f_{m} }</script></li>
 <li><p>解调的信噪比增益</p>
 <p>将输出的信噪比除以输入的信噪比，可得信噪比增益为</p>
-<script type="math/tex; mode=display">G_{\mathrm{FM} }=\frac{S_{o} / N_{o} }{S_{i} / N_{i} }=3\left(\frac{\Delta f_{\max} }{f_{m} }\right)^{2} \frac{\overline{f^{2}(t)} }{|f(t)|_{\max }^{2} }\left(\frac{B_{\mathrm{FM} }}{f_{m} }\right)</script><p>若$\Delta f<em>{\max } \gg f</em>{m}$，则$B<em>{\mathrm{FM} } = 2(\Delta f</em>{\max}+f<em>m) \approx 2 \Delta f</em>{\max }$，上式可以写成</p>
+<script type="math/tex; mode=display">G_{\mathrm{FM} }=\frac{S_{o} / N_{o} }{S_{i} / N_{i} }=3\left(\frac{\Delta f_{\max} }{f_{m} }\right)^{2} \frac{\overline{f^{2}(t)} }{|f(t)|_{\max }^{2} }\left(\frac{B_{\mathrm{FM} }}{f_{m} }\right)</script><p>若$\Delta f_{\max } \gg f_{m}$，则$B_{\mathrm{FM} } = 2(\Delta f_{\max}+f_m) \approx 2 \Delta f_{\max }$，上式可以写成</p>
 <script type="math/tex; mode=display">G_{\mathrm{FM} }=6\left(\frac{A f_{\max } }{f_{m} }\right)^{3} \frac{\overline{f^{2}(t)} }{|f(t)|_{\max }^{2} }</script><p>单频信号的情况下，信噪比增益可以写为（更具体地推导请参考教材）</p>
 <script type="math/tex; mode=display">G_{\mathrm{FM} }=3 \beta_{\mathrm{FM} }^{2}\left(\beta_{\mathrm{FM} }+1\right) \approx 3 \beta_{\mathrm{FM} }^{3}</script></li>
 <li><p>与包络检波地常规调幅AM地抗噪性能对比（大信噪比情况）</p>
 <ol>
 <li>前提：单频调制，接收功率相等，信道噪声的功率谱密度相同。</li>
-<li>调幅AM：$\beta<em>{\rm AM}=1$，信噪比增益$G</em>{\rm AM} = \frac{2}{3}$</li>
-<li>输出信噪比对比：$\frac{\left(S<em>{a} / N</em>{o}\right)<em>{\rm FM} }{\left(S</em>{n} / N<em>{0}\right)</em>{\rm AM} } \approx 4.5\left(\frac{B<em>{\rm FM} }{B</em>{\mathrm{AM} }}\right)^{2}$</li>
+<li>调幅AM：$\beta_{\rm AM}=1$，信噪比增益$G_{\rm AM} = \frac{2}{3}$</li>
+<li>输出信噪比对比：$\frac{\left(S_{a} / N_{o}\right)_{\rm FM} }{\left(S_{n} / N_{0}\right)_{\rm AM} } \approx 4.5\left(\frac{B_{\rm FM} }{B_{\mathrm{AM} }}\right)^{2}$</li>
 <li>结论<ol>
 <li>宽带调频与调幅信号的输出信噪比之比与它们的带宽比的平方成正比。这说明，对于调频系统来说，<u>增加传输带宽可以改善抗噪声性能</u>。</li>
 <li>在调频指数$\beta_{\rm FM}$较高时，调频系统的输出信噪比远大于调幅系统的输出信噪比——<u>调频系统是用传输带宽换取的信噪比</u>。</li>
@@ -721,7 +721,7 @@
 </ol>
 <h3 id="不同模拟调制方式的比较"><a href="#不同模拟调制方式的比较" class="headerlink" title="不同模拟调制方式的比较"></a>不同模拟调制方式的比较</h3><ol>
 <li><p>比较表格</p>
-<p>表格中，FM的调幅指数$m<em>f$即为前文中的$\beta</em>{\rm FM}$。各调制方式的输出信噪比反映的是与输入信号功率的数量关系。</p>
+<p>表格中，FM的调幅指数$m_f$即为前文中的$\beta_{\rm FM}$。各调制方式的输出信噪比反映的是与输入信号功率的数量关系。</p>
 <p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/通信原理/[通信原理][4.5]模拟调制方式性能对比表.png" alt="image-20200602201226434" style="zoom:80%;" /></p>
 </li>
 <li><p>抗噪声性能对比</p>
@@ -749,7 +749,7 @@
 <li><p>两各网络的关系频域上互补：$H_1 (f) H_2 (t) = 1 \quad \text{（或常数）}$</p>
 </li>
 <li><p>加重改善系数：用于衡量系统加重后对噪声性能的改善程度，表示为$I_{\omega}=\frac{加重后的输出信噪比{\rm SNR}_o}{不加重的输出信噪比{\rm SNR}’_o}$</p>
-<p>由于$S<em>o = S’_o$，因此$I</em>{\omega} = \frac{N_o}{N’_o}$。</p>
+<p>由于$S_o = S’_o$，因此$I_{\omega} = \frac{N_o}{N’_o}$。</p>
 </li>
 <li><p>衰减因子：用于保持预加重后频偏不变。</p>
 <p>原因：提升高频分量，将使得最大频偏增大，从而超出信道所容许的频带宽度。</p>
@@ -811,7 +811,7 @@
 <li><p>频域表达式（作为推导条件）：$X_{s o}(\omega)=X(\omega) H(\omega) / T_s \ (|\omega| &lt; \omega_H)$（注意幅度上变化，除以了一个$T_s$）</p>
 </li>
 <li><p>时域表达式</p>
-<script type="math/tex; mode=display">\begin{align} \hat{x}(t) &= h(t) * x_s (t) \\ &=\frac{1}{T_{\mathrm{S} }} \sum_{n=-\infty}^{+\infty} x\left(n T_{S}\right) \frac{\sin \omega_{H}\left(t-n T_{S}\right)}{\omega_{H}\left(t-n T_{S}\right)} \end{align}</script><p>核函数：$\frac{\sin \omega<em>{H}t}{\omega</em>{H}t}$</p>
+<script type="math/tex; mode=display">\begin{align} \hat{x}(t) &= h(t) * x_s (t) \\ &=\frac{1}{T_{\mathrm{S} }} \sum_{n=-\infty}^{+\infty} x\left(n T_{S}\right) \frac{\sin \omega_{H}\left(t-n T_{S}\right)}{\omega_{H}\left(t-n T_{S}\right)} \end{align}</script><p>核函数：$\frac{\sin \omega_{H}t}{\omega_{H}t}$</p>
 <p>解读：<u>任何一个窄带信号（窄带函数）都可以展开为核函数的线性叠加</u>。（类似于傅里叶级数、泰勒级数展开）</p>
 </li>
 <li><p>图示例子</p>
@@ -827,7 +827,7 @@
 </li>
 <li><p>理解分析</p>
 <ol>
-<li><p>信号的抽样频谱表达式：$X<em>{s}(\omega)=\frac{1}{T</em>{s} } \sum<em>{n=-\infty}^{+\infty} X\left(\omega-n \omega</em>{s}\right)$</p>
+<li><p>信号的抽样频谱表达式：$X_{s}(\omega)=\frac{1}{T_{s} } \sum_{n=-\infty}^{+\infty} X\left(\omega-n \omega_{s}\right)$</p>
 <p>再次强调：是原信号频谱以抽样速率为周期的周期延拓。只不过带通信号同时有上边带和下边带，两边都有同时平移。</p>
 </li>
 <li><p>示例：$f_H = 3B, \ f_s = 2B$，第二幅图是左移$2B$，第三幅图是右移$2B$，把所有平移后的（原始的也算）都叠加即得抽样信号频谱。</p>
@@ -840,7 +840,7 @@
 </ol>
 <h3 id="5-3-实际抽样"><a href="#5-3-实际抽样" class="headerlink" title="5.3 实际抽样"></a>5.3 实际抽样</h3><ol>
 <li><p>自然抽样</p>
-<p>抽样脉冲序列$c(t)=\sum<em>{x=-\infty}^{\infty} p\left(t-n T</em>{s}\right)$，其中$p(t)$是任意形状的脉冲。自然抽样时，抽样过程实际上是<strong>相乘过程</strong>。</p>
+<p>抽样脉冲序列$c(t)=\sum_{x=-\infty}^{\infty} p\left(t-n T_{s}\right)$，其中$p(t)$是任意形状的脉冲。自然抽样时，抽样过程实际上是<strong>相乘过程</strong>。</p>
 </li>
 <li><p>平顶抽样</p>
 <ol>
@@ -863,7 +863,7 @@
 </li>
 <li><p>重建电平（量化电平）：$y_k$，数量为$L$</p>
 </li>
-<li><p>量化间隔：$\Delta<em>k=k</em>{k+1} - x_k$</p>
+<li><p>量化间隔：$\Delta_k=k_{k+1} - x_k$</p>
 </li>
 <li><p>量化误差：$q$</p>
 </li>
@@ -878,7 +878,7 @@
 <ol>
 <li>输入：连续幅度的随机矢量（$N$维）：$\bar{x}$</li>
 <li>输出：离散的幅度矢量：$\bar{y}$<ol>
-<li>重建码本（码本）：${\bar{y_i}} \ (1 \leq i \leq L)$</li>
+<li>重建码本（码本）：$\{\bar{y_i}\} \ (1 \leq i \leq L)$</li>
 <li>码本尺度：$L$</li>
 </ol>
 </li>
@@ -926,7 +926,7 @@
 </li>
 <li><p>量化间隔：$\Delta_k = \Delta = \frac{2V}{L}$</p>
 </li>
-<li><p>当信号<strong>不过载</strong>时，有$\sum<em>\limits{k=1}^{L} P</em>{k}=1$</p>
+<li><p>当信号<strong>不过载</strong>时，有$\sum_\limits{k=1}^{L} P_{k}=1$</p>
 </li>
 <li><p><strong>不过载时的量化噪声</strong></p>
 <script type="math/tex; mode=display">\sigma_{q}^{2}=\frac{\Delta^{2} }{12}=\frac{V^{2} }{3 L^{2} }</script></li>
@@ -940,7 +940,7 @@
 <li>均匀分布信号：$SNR_{\rm dB} \approx 20 \lg D + 6.02n$</li>
 <li>正弦信号：设幅度为$A_m$，则功率为$S = A_m^2 / 2$<ol>
 <li>y一般形式：$SNR_{\rm dB} \approx 4.77 + 20 \lg D + 6.02n$</li>
-<li>当$A<em>m = V$时，信号幅度的归一化有效值为$D = \frac{1}{\sqrt{2} }$，则满载正弦波的信噪比为：$SNR</em>{\rm dB} = 6.02n + 1.76$</li>
+<li>当$A_m = V$时，信号幅度的归一化有效值为$D = \frac{1}{\sqrt{2} }$，则满载正弦波的信噪比为：$SNR_{\rm dB} = 6.02n + 1.76$</li>
 </ol>
 </li>
 <li>实际语音信号<ol>
@@ -1014,7 +1014,7 @@
 </li>
 <li><p>段落码：共可以表示8段，A律13折线中，000和001共同表示第一段。因此，$M_2 M_3 M_4$代表的是<strong>8个段落的起始电平值</strong>。</p>
 </li>
-<li><p>电平码：确定好了段落之后，段落内的16个量化电平值。设输入信号电平为$x\Delta<em>k$，在第$k$段内，则$$(M_5 M_6 M_7 M_8)_2 = (\lfloor \frac{x\Delta-\text{所在段的起始电平} }{\text{第}k\text{段的量化间隔}\Delta_k} \rfloor)</em>{10} $$</p>
+<li><p>电平码：确定好了段落之后，段落内的16个量化电平值。设输入信号电平为$x\Delta_k$，在第$k$段内，则<script type="math/tex">(M_5 M_6 M_7 M_8)_2 = (\lfloor \frac{x\Delta-\text{所在段的起始电平} }{\text{第}k\text{段的量化间隔}\Delta_k} \rfloor)_{10}</script></p>
 </li>
 <li><p>编码对照表（实际上，$\delta$那两栏没用）</p>
 <p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/通信原理/[通信原理][5.9]PCM8位码编码对照表.png" alt="image-20200610123117710" style="zoom: 67%;" /></p>
@@ -1178,7 +1178,7 @@
 <li><p>一般情况下的随机序列功率谱</p>
 <ol>
 <li><p>一般情况下随机序列的表示</p>
-<script type="math/tex; mode=display">S(t) = \sum\limits_{n=-\infty}^{\infty} S_{n}(t-nT_s)</script><p>其中$S_n(t) \in {g_i(t); i=1,2,…,N}$，有$N$种不同的信号源可以选择。假设$N=2$，则</p>
+<script type="math/tex; mode=display">S(t) = \sum\limits_{n=-\infty}^{\infty} S_{n}(t-nT_s)</script><p>其中$S_n(t) \in \{g_i(t); i=1,2,…,N\}$，有$N$种不同的信号源可以选择。假设$N=2$，则</p>
 <script type="math/tex; mode=display">S_n(t)=\begin{cases}g_1(t-nT_s)&&\text{p}\\g_2(t-nT_s)&&\text{1-p}\end{cases}</script></li>
 <li><p>连续功率谱密度</p>
 <ol>
@@ -1248,7 +1248,7 @@
 <li>设滤波器的带宽为$W$，码元速率$R_B = \frac{1}{T_s}$，则<ul>
 <li>$R_B &gt; 2W$：不满足</li>
 <li>$R_B = 2W$：有<strong>唯一</strong>可能的传递函数$h(t)=Sa(\frac{\pi t}{T_s})$，频谱$H(f)=T_s(|f|\leq W=\frac{\pi}{T_s})$</li>
-<li>$R<em>B &lt; 2W$：<strong>有可能</strong>满足（思考：为什么？），即只有一些特定值满足<br><strong><u>考察方式</u></strong>：$2f</em>{H}T_{s}=K$，$K$为整数，$f_H$为理想低通滤波器的截止频率</li>
+<li>$R_B &lt; 2W$：<strong>有可能</strong>满足（思考：为什么？），即只有一些特定值满足<br><strong><u>考察方式</u></strong>：$2f_{H}T_{s}=K$，$K$为整数，$f_H$为理想低通滤波器的截止频率</li>
 </ul>
 </li>
 </ul>
@@ -1277,7 +1277,7 @@
 <li>$\alpha \uparrow$，$h(t)$拖尾衰减速度$\uparrow$</li>
 </ol>
 </li>
-<li><p>等效的理想低通特性<br>如下图的升余弦型系统，其等效的理想低通滤波器的截止频率$f<em>{N} = \frac{1}{2}f</em>{H}$</p>
+<li><p>等效的理想低通特性<br>如下图的升余弦型系统，其等效的理想低通滤波器的截止频率$f_{N} = \frac{1}{2}f_{H}$</p>
 <p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/通信原理/[通信原理]升余弦型系统.png" alt="image-20200416202301866"></p>
 </li>
 <li><p>参数计算</p>
@@ -1351,10 +1351,10 @@
 <ol>
 <li><p>一般形式：部分响应信号的当前抽样值$c_n$和其他信码的串扰值有关，其波形表达式为</p>
 <script type="math/tex; mode=display">c_n = r_0 a_n + r_1 a_{n-1} + r_2 a_{n-2} + ... + r_N a_{n-N}</script><p>其中$r_k$为加权系数，记载于固定的表格中（和部分响应波形的种类有关，此处从略）。</p>
-<p>以第一类响应信号为例，其波形表达式为$c<em>n = a_n + a</em>{n-1}$，接收端恢复恢复时作计算：$a<em>n = c_n -a</em>{n-1}$即可。</p>
+<p>以第一类响应信号为例，其波形表达式为$c_n = a_n + a_{n-1}$，接收端恢复恢复时作计算：$a_n = c_n -a_{n-1}$即可。</p>
 </li>
 <li><p><strong>差错传播</strong></p>
-<p>在传输过程中，${c<em>n}$序列中的某个抽样值因干扰而产生差错，则不但会造成当前的$a_n$恢复错误，而且会影响到以后所有的$a</em>{n+1}, a_{n+2},…$等抽样值。</p>
+<p>在传输过程中，$\{c_n\}$序列中的某个抽样值因干扰而产生差错，则不但会造成当前的$a_n$恢复错误，而且会影响到以后所有的$a_{n+1}, a_{n+2},…$等抽样值。</p>
 <p>解决方法：预编码</p>
 </li>
 </ol>
@@ -1363,15 +1363,15 @@
 <ol>
 <li><p>编码方法：</p>
 <ol>
-<li>在发送端相关编码之前先进行预编码（L进制）：$a<em>n = r_0 b_n + r_1 b</em>{n-1} + r<em>2 b</em>{n-2} + … + r<em>N b</em>{n-N} \quad ({\rm mod}\ L)$</li>
-<li>再进行相关编码：$c<em>n = r_0 b_n + r_1 b</em>{n-1} + r<em>2 b</em>{n-2} + … + r<em>N b</em>{n-N} $</li>
+<li>在发送端相关编码之前先进行预编码（L进制）：$a_n = r_0 b_n + r_1 b_{n-1} + r_2 b_{n-2} + … + r_N b_{n-N} \quad ({\rm mod}\ L)$</li>
+<li>再进行相关编码：$c_n = r_0 b_n + r_1 b_{n-1} + r_2 b_{n-2} + … + r_N b_{n-N} $</li>
 <li>恢复（模2判决）：$a_n = c_n({\rm mod}\ L)$</li>
 </ol>
 </li>
 <li><p>物理意义：预编码之后的部分响应信号各抽样值之间已解除了相关性</p>
 </li>
 <li><p>举例</p>
-<p>| 信号种类 | 第一类部分响应信号                        | 第四类部分响应信号                        |<br>| ———— | ————————————————————- | ————————————————————- |<br>| 预编码   | $b<em>n = a_n - b</em>{n-1}\quad ({\rm mod}\ 2)$ | $b<em>n = a_n + b</em>{n-2}\quad ({\rm mod}\ 4)$ |<br>| 相关编码 | $c<em>n = b_n + b</em>{n-1}$                     | $c<em>n = b_n - b</em>{n-2}$                     |<br>| 解码恢复 | $a_n = c_n ({\rm mod}\ 2)$                | $a_n = c_n ({\rm mod}\ 4)$                |</p>
+<p>| 信号种类 | 第一类部分响应信号                        | 第四类部分响应信号                        |<br>| ———— | ————————————————————- | ————————————————————- |<br>| 预编码   | $b_n = a_n - b_{n-1}\quad ({\rm mod}\ 2)$ | $b_n = a_n + b_{n-2}\quad ({\rm mod}\ 4)$ |<br>| 相关编码 | $c_n = b_n + b_{n-1}$                     | $c_n = b_n - b_{n-2}$                     |<br>| 解码恢复 | $a_n = c_n ({\rm mod}\ 2)$                | $a_n = c_n ({\rm mod}\ 4)$                |</p>
 <p>编码系统（第四类部分响应系统）</p>
 <p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/通信原理/[通信原理][CH9]预编码和相关编码系统_第四类.png" alt="image-20200427093020135"></p>
 </li>
@@ -1429,7 +1429,7 @@
 </ol>
 </li>
 <li><p>注意事项</p>
-<p>在AMI码中，三种码元出现的概率<strong>不相等</strong>，$-A$、$0$、$+A$，三种幅度的电平出现的概率分别为$\frac{1}{4}$、$\frac{1}{2}$、$\frac{1}{4}$，因此判决门限应满足$d<em>{1}&gt;\frac{A}{2}$、$d</em>{2}&lt;-\frac{A}{2}$，总比特率$P_b$也必然不同。</p>
+<p>在AMI码中，三种码元出现的概率<strong>不相等</strong>，$-A$、$0$、$+A$，三种幅度的电平出现的概率分别为$\frac{1}{4}$、$\frac{1}{2}$、$\frac{1}{4}$，因此判决门限应满足$d_{1}&gt;\frac{A}{2}$、$d_{2}&lt;-\frac{A}{2}$，总比特率$P_b$也必然不同。</p>
 </li>
 </ol>
 </li>
@@ -1562,9 +1562,9 @@
 </li>
 <li><p>数学表述</p>
 <ol>
-<li><p><strong>有$(2N+1)$个抽头</strong>，加权系数为$C<em>{-N}, C</em>{-N+1}, \cdots, C_{N}$（注意下标）</p>
+<li><p><strong>有$(2N+1)$个抽头</strong>，加权系数为$C_{-N}, C_{-N+1}, \cdots, C_{N}$（注意下标）</p>
 </li>
-<li><p>设输入波形序列为${x_k}$，输出波形序列为${y_k}$，则有</p>
+<li><p>设输入波形序列为$\{x_k\}$，输出波形序列为$\{y_k\}$，则有</p>
 <script type="math/tex; mode=display">y_k = \sum\limits_{i=-N}^{N}C_{i}x_{k-i},\ k=-2N,\cdots,0,\cdots,+2N</script></li>
 <li><p>矩阵表述</p>
 <script type="math/tex; mode=display">Y=XC</script><p>其中各个矩阵有如下表示：</p>
@@ -1633,7 +1633,7 @@
 <h3 id="2-2FSK（二进制频移键控）"><a href="#2-2FSK（二进制频移键控）" class="headerlink" title="2. 2FSK（二进制频移键控）"></a>2. 2FSK（二进制频移键控）</h3><ol>
 <li><p>可以看作是两个不同载频的2ASK信号之和</p>
 </li>
-<li><p>频宽：两倍基带信号带宽与两个载频差绝对值的和，即$\Delta f=2 B+\left|f<em>{2}-f</em>{1}\right|$</p>
+<li><p>频宽：两倍基带信号带宽与两个载频差绝对值的和，即$\Delta f=2 B+\left|f_{2}-f_{1}\right|$</p>
 </li>
 <li><p>特点</p>
 <ol>
@@ -1762,9 +1762,9 @@
 <li>二进制数字调制</li>
 <li>发送的信息只有两种$x_1$和$x_2$</li>
 <li>对应的发送信号为$S_1 (t)$和$S_2 (t)$</li>
-<li>$x(t)$的条件概率密度分别为$f<em>{S1} (x)$和$f</em>{S2} (x)$。</li>
+<li>$x(t)$的条件概率密度分别为$f_{S1} (x)$和$f_{S2} (x)$。</li>
 <li>发送$S_1(t)$和$S_2 (t)$的概率为$P(S_1)$和$P(S_2)$，通常已知。</li>
-<li>设$P<em>{S1} (S_2)$为发送$S_1 (t)$而被错判为$S_2 (t)$的概率，$P</em>{S2} (S_1)$为发送$S_2 (t)$而被错判为$S_1 (t)$的概率。</li>
+<li>设$P_{S1} (S_2)$为发送$S_1 (t)$而被错判为$S_2 (t)$的概率，$P_{S2} (S_1)$为发送$S_2 (t)$而被错判为$S_1 (t)$的概率。</li>
 <li>判决门限设为$V_T$。</li>
 </ol>
 </li>
@@ -1796,7 +1796,7 @@
 <ol>
 <li><p>前提</p>
 <ol>
-<li>设$E<em>{S1}$、$E</em>{S2}$分别为$S<em>1 (t)$和$S_2 (t)$在$0 \leq t \leq T_s$内的能量，当二进制调制时，信号有相同的能量，$E</em>{S 1}=E<em>{S 2}=E</em>{b}$，表示每比特的信号能量。</li>
+<li>设$E_{S1}$、$E_{S2}$分别为$S_1 (t)$和$S_2 (t)$在$0 \leq t \leq T_s$内的能量，当二进制调制时，信号有相同的能量，$E_{S 1}=E_{S 2}=E_{b}$，表示每比特的信号能量。</li>
 <li>相关系数：$\rho$，$\rho \in (-1,1)$</li>
 </ol>
 </li>
@@ -1880,7 +1880,7 @@
 <li>存在<strong>相位糢糊度的</strong>问题：有$M$重相位糢糊度。</li>
 </ol>
 </li>
-<li><p>误码性能：使用<strong>格雷码</strong>时，误码率与误比特率之间存在关系$P<em>{b, \text { MPSK } } \approx P</em>{s, M F S K} / \log _{2} M$</p>
+<li><p>误码性能：使用<strong>格雷码</strong>时，误码率与误比特率之间存在关系$P_{b, \text { MPSK } } \approx P_{s, M F S K} / \log _{2} M$</p>
 </li>
 </ol>
 </li>
@@ -1934,7 +1934,7 @@
 </li>
 <li><p>相位网络图</p>
 <ol>
-<li><p>MSK的信号表达式：$S<em>{\rm MSK }(t)=A \cos \left[2 \pi f</em>{C} t+\frac{p<em>{n} \pi t}{2 T</em>{b} }+\phi(0)\right]$</p>
+<li><p>MSK的信号表达式：$S_{\rm MSK }(t)=A \cos \left[2 \pi f_{C} t+\frac{p_{n} \pi t}{2 T_{b} }+\phi(0)\right]$</p>
 <p><u>其中，$p_n = \pm 1 $，分别表示二进制的1和0</u>。$\phi(0)$为初相。</p>
 </li>
 <li><p>相位网络图：每比特变化$\pm \frac{\pi}{2}$，因此累计相位$\phi(t)$在每比特结束时必定为$\frac{\pi}{2}$的整数倍。奇数倍$T_b$时刻奇数倍，偶数倍$T_b$时刻偶数倍。图中粗线路径表示而信息序列为1101000。</p>
@@ -1956,9 +1956,9 @@
 <script type="math/tex; mode=display">C=W \log _{2}\left(1+\frac{S}{N}\right)</script></li>
 <li><p>香农公式的说明</p>
 <ol>
-<li><p>变形：$\frac{C}{W}=\log <em>{2}\left(1+\frac{S}{N}\right)=\log </em>{2}\left(1+\frac{E<em>{b} / T</em>{b} }{n_{0} W}\right)$</p>
+<li><p>变形：$\frac{C}{W}=\log _{2}\left(1+\frac{S}{N}\right)=\log _{2}\left(1+\frac{E_{b} / T_{b} }{n_{0} W}\right)$</p>
 </li>
-<li><p>极限情况下，$C = \frac{1}{T<em>b}$，即信道容量等于信息传输速率。因此$\frac{C}{W}=\log </em>{2}\left(1+\frac{E<em>{b} }{n</em>{0} } \frac{C}{W}\right)$</p>
+<li><p>极限情况下，$C = \frac{1}{T_b}$，即信道容量等于信息传输速率。因此$\frac{C}{W}=\log _{2}\left(1+\frac{E_{b} }{n_{0} } \frac{C}{W}\right)$</p>
 </li>
 <li><font color='red'>**<u>香农极限：当$C/W \rightarrow 0$时，$E_b / n_0 \rightarrow \ln 2 = -1.6 {}\rm dB$。这是实现无误传输所需要的最低$E_b / n_0 $，称为香农极限。</u>**</font>
 </li>
@@ -2110,7 +2110,7 @@
 </li>
 <li><p>码多项式</p>
 <ol>
-<li><p>许用码组$A=\left(a<em>{n-1} a</em>{n-2} \cdots a<em>{1} a</em>{0}\right)$可以表示为</p>
+<li><p>许用码组$A=\left(a_{n-1} a_{n-2} \cdots a_{1} a_{0}\right)$可以表示为</p>
 <script type="math/tex; mode=display">A(D)=a_{n-1} D^{n-1}+a_{n-2} D^{n-2}+a_{n-3} D^{n-3}+\dots+a_{1} D+a_{0}</script><p>其中$D$为以个任意的实变量，它的幂次表示<strong>移位的次数</strong>。加发表示的是<strong>模2和</strong>。</p>
 </li>
 <li><p>一个长为$n$的循环码必定为按模$(D^n+1)$运算的一个余式，可以表示为</p>
@@ -2159,7 +2159,7 @@
 </li>
 <li><p>监督矩阵</p>
 <ol>
-<li><p>监督多项式：由于$g(D)$能除尽$(D^n + 1)$，因此有$D^{n}+1=g(D) h(D)$，其中$h(D)$称为监督多项式，$h(D)=h<em>{k} D^{k}+\dots+h</em>{1} D + h_0$。</p>
+<li><p>监督多项式：由于$g(D)$能除尽$(D^n + 1)$，因此有$D^{n}+1=g(D) h(D)$，其中$h(D)$称为监督多项式，$h(D)=h_{k} D^{k}+\dots+h_{1} D + h_0$。</p>
 </li>
 <li><p>监督矩阵</p>
 <script type="math/tex; mode=display">H=\left[\begin{array}{cccccc} h_{0} & h_{1} & \cdots & h_{k} & & & \\ & & & & & & 0 \\ & h_{0} & h_{1} & \cdots &  & h_{k} & & \\ 0 & & \ddots & \ddots & & \ddots & & \\ & & & h_{0} & h_{1} & \cdots & h_{k} \end{array}\right]</script></li>
