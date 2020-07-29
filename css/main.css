@@ -1143,7 +1143,7 @@ pre .javascript .function {
   padding: 2px;
 }
 .site-author-name {
-  color: #f5f5f5;
+  color: #666;
   font-weight: normal;
   margin: 5px 0 0;
   text-align: center;
@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffc6c4;
+  background: #86ff60;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
