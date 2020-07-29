@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_mount2_32_32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_mount2_16_16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文是自动控制原理课程中部分知识点的个人总结以及知识点的大纲罗列，并不是完整的原理公式汇总。   文中提到的教材是高飞、袁运能、杨晨阳所著的《自动控制原理》，所有章节和页码均对应于该教材上的内容。 所写的内容并不能完全反映该课程的所有知识点，请务必注意。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动控制原理部分知识点笔记">
+<meta property="og:url" content="http://yoursite.com/2020/07/29/Auto-Control-Note/index.html">
+<meta property="og:site_name" content="UmiQS&#39; Blog">
+<meta property="og:description" content="本文是自动控制原理课程中部分知识点的个人总结以及知识点的大纲罗列，并不是完整的原理公式汇总。   文中提到的教材是高飞、袁运能、杨晨阳所著的《自动控制原理》，所有章节和页码均对应于该教材上的内容。 所写的内容并不能完全反映该课程的所有知识点，请务必注意。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E4%B8%80%E9%98%B6%E6%8C%87%E6%A0%87.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E4%B8%80%E9%98%B6%E8%BE%93%E5%85%A5%E8%A1%A8%E8%BE%BE%E5%BC%8F.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E4%BA%8C%E9%98%B6%E6%8C%87%E6%A0%87.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E9%AB%98%E9%98%B6%E7%B3%BB%E7%BB%9F.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E7%B3%BB%E7%BB%9F%E5%9E%8B%E5%88%AB.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E7%A8%B3%E6%80%81%E8%AF%AF%E5%B7%AE%E8%A1%A8.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E6%A0%B9%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.png">
+<meta property="og:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E5%A5%88%E6%B0%8F%E5%88%A4%E6%8D%AE%E6%B3%A8%E6%84%8F.png">
+<meta property="article:published_time" content="2020-07-29T02:11:15.000Z">
+<meta property="article:modified_time" content="2020-07-29T03:21:08.303Z">
+<meta property="article:author" content="UmiQS">
+<meta property="article:tag" content="学科笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6/[%E8%87%AA%E6%8E%A7]%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/07/29/Auto-Control-Note/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自动控制原理部分知识点笔记 | UmiQS' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">UmiQS' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/29/Auto-Control-Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/MyAvatar.jpg">
+      <meta itemprop="name" content="UmiQS">
+      <meta itemprop="description" content="天行有常，不为尧存，不为桀亡。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="UmiQS' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自动控制原理部分知识点笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-29 10:11:15 / 修改时间：11:21:08" itemprop="dateCreated datePublished" datetime="2020-07-29T10:11:15+08:00">2020-07-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%B5%E5%AD%90%E4%BF%A1%E6%81%AF/" itemprop="url" rel="index"><span itemprop="name">电子信息</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/29/Auto-Control-Note/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/29/Auto-Control-Note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文是自动控制原理课程中部分知识点的个人总结以及知识点的大纲罗列，并不是完整的原理公式汇总。  </p>
+<p>文中提到的教材是高飞、袁运能、杨晨阳所著的《自动控制原理》，所有章节和页码均对应于该教材上的内容。</p>
+<p>所写的内容并不能完全反映该课程的所有知识点，请务必注意。</p>
+<a id="more"></a>
+<h1 id="传递函数"><a href="#传递函数" class="headerlink" title="传递函数"></a>传递函数</h1><p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]传递函数.png" alt="传递函数"></p>
+<h1 id="第二章-时域分析"><a href="#第二章-时域分析" class="headerlink" title="第二章 时域分析"></a>第二章 时域分析</h1><h2 id="1-典型输入"><a href="#1-典型输入" class="headerlink" title="1. 典型输入"></a>1. 典型输入</h2><ol>
+<li><p>一阶系统</p>
+<ol>
+<li><p>瞬态性能指标</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]一阶指标.png" alt="一阶指标" style="zoom: 50%;" /></p>
+</li>
+<li><p>表达式</p>
+<p>线性定常系统对输入信号导数（积分）的响应，等于系统对该输入信号响应的导数（积分）。</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]一阶输入表达式.png" alt="image-20200729102446983"></p>
+</li>
+</ol>
+</li>
+<li><p>二阶系统：看教材即可，教材上的公式总结得够用了。</p>
+</li>
+<li><p>瞬态响应指标（重点是二阶系统）</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]二阶指标.png" alt="二阶瞬态指标" style="zoom: 67%;" /></p>
+</li>
+<li><p>高阶系统</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]高阶系统.png" alt="高阶系统" style="zoom:67%;" /></p>
+</li>
+</ol>
+<h2 id="2-稳定性判断"><a href="#2-稳定性判断" class="headerlink" title="2. 稳定性判断"></a>2. 稳定性判断</h2><ol>
+<li><p>系统稳定的充要条件：系统的特征方程的所有根都具有负实部，或者说都位于s平面的虚轴之左。</p>
+</li>
+<li><p>劳斯判据</p>
+</li>
+<li><p>稳态误差分析</p>
+<ol>
+<li><p>系统的型别</p>
+<p>简单来说，就是$G(s)H(s)$中$\frac{1}{s}$因子的次数。</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]系统型别.png" alt="系统型别" style="zoom: 67%;" /></p>
+</li>
+<li><p>稳态误差表：见书P43~P44</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]稳态误差表.png" alt="稳态误差" style="zoom:60%;" /></p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="第三章-根轨迹法"><a href="#第三章-根轨迹法" class="headerlink" title="第三章 根轨迹法"></a>第三章 根轨迹法</h1><h2 id="1-根轨迹及其方程"><a href="#1-根轨迹及其方程" class="headerlink" title="1. 根轨迹及其方程"></a>1. 根轨迹及其方程</h2><h2 id="2-绘制根轨迹图"><a href="#2-绘制根轨迹图" class="headerlink" title="2. 绘制根轨迹图"></a>2. 绘制根轨迹图</h2><p>   关于渐近线：</p>
+<ol>
+<li><p>终点为无穷远的轨迹：渐近线</p>
+<p>P58有常见的根轨迹渐近线的图示，随着$n-m$变化。</p>
+</li>
+<li><p>终点为开环零点的轨迹：终止角</p>
+<h2 id="3-根轨迹分析"><a href="#3-根轨迹分析" class="headerlink" title="3. 根轨迹分析"></a>3. 根轨迹分析</h2><p>由<b><font color='red'>开环</font></b>零极点得到的是<b><font color='red'>闭环</font></b>特征根的轨迹特性。</p>
+<p><img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]根轨迹分析.png" alt="根轨迹分析" style="zoom:67%;" /></p>
+<h2 id="4-绘制根轨迹模板（⭐️️）"><a href="#4-绘制根轨迹模板（⭐️️）" class="headerlink" title="4. 绘制根轨迹模板（⭐️️）"></a>4. 绘制根轨迹模板（⭐️️）</h2></li>
+<li><p>由题可知极点$p$、零点$z$，并确定$n$、$m$，可以得到$n-m$</p>
+</li>
+<li><p>在坐标上画出零极点$p$、$z$</p>
+<ol>
+<li>注意分析<u>实轴</u>上的零极点，确定<strong>实轴上的轨迹段（重根的个数要全都算上）</strong>。</li>
+<li>估计轨迹图的大致走向，以及哪里会有分离点和会合点，渐近线可以由$n-m$来估计。这一步的作用是做到心中有数，根轨迹该知识什么样的。如果之后计算出现问题，有时候能够利用这个大致的印象发现错误。</li>
+</ol>
+</li>
+<li><p>计算会合/分离点$d$</p>
+<script type="math/tex; mode=display">\sum\limits_{i} \frac{1}{d - z_{i} } = \sum\limits_{j} \frac{1}{d - p_{j} }</script><ol>
+<li><strong>重根要都算</strong></li>
+<li>如果有要求，看一下分离角和会合角。简单的轨迹图没啥好算的。</li>
+</ol>
+</li>
+<li><p>可以考虑渐近线：参考教材P58图3-6</p>
+</li>
+<li><p>计算与<strong>虚轴</strong>的交点（实轴的看题目要求）</p>
+<ol>
+<li><p>法一：使用系统特征多项式</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l} \operatorname{Re}[1+G(j \omega) H(j \omega)]=0 \\ \operatorname{Im}[1+G(j \omega) H(j \omega)]=0 \end{array} \Rightarrow \omega, K\right.</script></li>
+<li><p>法二：劳斯判据</p>
+</li>
+</ol>
+</li>
+<li><p>零极点在非坐标轴的情况下</p>
+<ol>
+<li>极点：考虑起始角</li>
+<li>零点：考虑终止角</li>
+<li>在坐标轴上的一般能直接看出来</li>
+</ol>
+</li>
+<li><p>系统稳定性分析：和“计算与虚轴的交点”相结合</p>
+<p>很难说哪个方法更好。使用系统特征多项式的方法更为直接，但是有时候会涉及高次（大于二次）方程的求解。使用劳斯判据计算$s$相对容易，但是最后也有一个带入求解的过程。两种具体的计算方法请参考教材。</p>
+</li>
+</ol>
+<h1 id="第四章-频域分析"><a href="#第四章-频域分析" class="headerlink" title="第四章 频域分析"></a>第四章 频域分析</h1><h2 id="1-典型环节频率特性：奈奎斯特曲线、波特图"><a href="#1-典型环节频率特性：奈奎斯特曲线、波特图" class="headerlink" title="1. 典型环节频率特性：奈奎斯特曲线、波特图"></a>1. 典型环节频率特性：奈奎斯特曲线、波特图</h2><p>   注意：截止频率用<strong>分段函数</strong>比较好算，将在本章的技巧部分介绍。不要直接用$L(\omega)$，不然很可能出现超越方程。<s>（二分法逼近警告）</s></p>
+<h2 id="2-开环系统的频率特性"><a href="#2-开环系统的频率特性" class="headerlink" title="2. 开环系统的频率特性"></a>2. 开环系统的频率特性</h2><h2 id="3-奈奎斯特稳定判据（频域稳定判据）"><a href="#3-奈奎斯特稳定判据（频域稳定判据）" class="headerlink" title="3. 奈奎斯特稳定判据（频域稳定判据）"></a>3. 奈奎斯特稳定判据（频域稳定判据）</h2><p>   注意事项：</p>
+<p>   <img src="https://vicumi-1300325441.cos.ap-beijing.myqcloud.com/自动控制/[自控]奈氏判据注意.png" alt="奈氏判据注意事项" style="zoom:60%;" /></p>
+<h2 id="4-技巧"><a href="#4-技巧" class="headerlink" title="4. 技巧"></a>4. 技巧</h2><ol>
+<li><p>要求“<u>使用波特图</u>“计算闭环系统稳定时的K值时，如果$G(j \omega) H(j \omega)$不好算，可以先用<strong>劳斯判据</strong>把结果算出来，再假装用波特图计算。</p>
+</li>
+<li><p>计算$\omega_c$时，学会使用<strong>分段计算</strong></p>
+<p>若某一段$\left[ \omega_1, \omega_2 \right]$的斜率为$k$，则$L\left(\omega_{2}\right)=L\left(\omega_{1}\right)-20\left(\lg \left(\omega_{2}\right)-\lg \left(\omega_{1}\right)\right)$</p>
+</li>
+</ol>
+<h1 id="第五章-采样控制系统"><a href="#第五章-采样控制系统" class="headerlink" title="第五章 采样控制系统"></a>第五章 采样控制系统</h1><ol>
+<li><p>信号的采样和恢复</p>
+</li>
+<li><p>z变换</p>
+</li>
+<li><p>脉冲传递函数</p>
+<p>这一部分只要注意到有采样开关的环节需要先z变换后相乘，无采样开关的环节先相乘再z变换就可以了。剩下的就是背诵z变换公式这样的基础知识即可。</p>
+<ol>
+<li>定义</li>
+<li>开环系统</li>
+<li>闭环系统</li>
+</ol>
+</li>
+<li><p>稳定性分析</p>
+</li>
+<li><p>稳态误差</p>
+</li>
+</ol>
+<h1 id="第六章-状态空间分析与设计"><a href="#第六章-状态空间分析与设计" class="headerlink" title="第六章 状态空间分析与设计"></a>第六章 状态空间分析与设计</h1><ol>
+<li><p>状态空间模型</p>
+<ol>
+<li><p>状态方程和输出方程</p>
+</li>
+<li><p>传递函数矩阵</p>
+<ol>
+<li><p>预解矩阵$\Phi (s)$</p>
+<script type="math/tex; mode=display">\Phi(s)=\frac{a d j(s I-A)}{|s I-A|}</script><p>其中$a d j(s I-A)$是伴随矩阵，详见<a href="https://zh.wikipedia.org/wiki/伴随矩阵" target="_blank" rel="noopener">维基百科上的介绍</a>。</p>
+<p>注意：求出<u>代数余子式</u>之后，将对应位置的的代数余子式<strong>转置</strong>排列才是伴随矩阵。线性代数中常用的记号为$A^{*}$。</p>
+</li>
+<li><p>传递函数矩阵$G(s)$</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>状态方程求解</p>
+<ol>
+<li>频域法</li>
+<li>时域法</li>
+</ol>
+</li>
+<li><p>系统的可控性与可观测性</p>
+<ol>
+<li>稳定性</li>
+<li>可控性，可控性阵$Q_c$</li>
+<li>可观测性，可观测性阵$Q_o$</li>
+</ol>
+</li>
+<li><p>由传递函数$G(s)$写状态方程</p>
+<ol>
+<li>可控标准型</li>
+<li>可观标准型</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" rel="tag"># 自动控制原理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/23/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB-1/" rel="prev" title="通信原理笔记汇总">
+      <i class="fa fa-chevron-left"></i> 通信原理笔记汇总
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#传递函数"><span class="nav-number">1.</span> <span class="nav-text">传递函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-时域分析"><span class="nav-number">2.</span> <span class="nav-text">第二章 时域分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-典型输入"><span class="nav-number">2.1.</span> <span class="nav-text">1. 典型输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-稳定性判断"><span class="nav-number">2.2.</span> <span class="nav-text">2. 稳定性判断</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-根轨迹法"><span class="nav-number">3.</span> <span class="nav-text">第三章 根轨迹法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-根轨迹及其方程"><span class="nav-number">3.1.</span> <span class="nav-text">1. 根轨迹及其方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-绘制根轨迹图"><span class="nav-number">3.2.</span> <span class="nav-text">2. 绘制根轨迹图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-根轨迹分析"><span class="nav-number">3.3.</span> <span class="nav-text">3. 根轨迹分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-绘制根轨迹模板（⭐️️）"><span class="nav-number">3.4.</span> <span class="nav-text">4. 绘制根轨迹模板（⭐️️）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章-频域分析"><span class="nav-number">4.</span> <span class="nav-text">第四章 频域分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-典型环节频率特性：奈奎斯特曲线、波特图"><span class="nav-number">4.1.</span> <span class="nav-text">1. 典型环节频率特性：奈奎斯特曲线、波特图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-开环系统的频率特性"><span class="nav-number">4.2.</span> <span class="nav-text">2. 开环系统的频率特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-奈奎斯特稳定判据（频域稳定判据）"><span class="nav-number">4.3.</span> <span class="nav-text">3. 奈奎斯特稳定判据（频域稳定判据）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-技巧"><span class="nav-number">4.4.</span> <span class="nav-text">4. 技巧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五章-采样控制系统"><span class="nav-number">5.</span> <span class="nav-text">第五章 采样控制系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六章-状态空间分析与设计"><span class="nav-number">6.</span> <span class="nav-text">第六章 状态空间分析与设计</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="UmiQS"
+      src="/images/MyAvatar.jpg">
+  <p class="site-author-name" itemprop="name">UmiQS</p>
+  <div class="site-description" itemprop="description">天行有常，不为尧存，不为桀亡。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备19047929号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">UmiQS</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '2645T7VIEgeR84nNcfWKIoUv-MdYXbMMI',
+      appKey     : 'QznEGn7Gz2GDMvKxUhiDwhRT',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
